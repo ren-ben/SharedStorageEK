@@ -38,6 +38,9 @@ minio-2           1/1     Running   3m
 minio-3           1/1     Running   3m  
 ```  
 
+
+
+
 ### 5. Benchmark Ausführung
 ```bash  
 # Terminal 1: Port Forward  
@@ -45,6 +48,17 @@ kubectl port-forward -n minio-distributed svc/benchmark-service 9090:8080
 # Terminal 2: Test  
 curl -X POST "http://localhost:9090/api/benchmark?count=10&sizeMB=10"
 ```  
+
+
+### 6. MinIO Console Zugriff (Docker Driver)
+```bash
+# MinIO Web-Interface öffnen (Dashboard + Health Check)
+minikube service minio-public -n minio-distributed --url
+
+# Alternative: Automatisches Browser-Öffnen
+minikube service minio-public -n minio-distributed
+```
+
 ## Benchmark Methodik (Detaillierte Beschreibung)
 
 ## Test-Design & Messprinzipien
@@ -134,6 +148,52 @@ MinIO erreicht 40–57 MB/s und übertrifft HDFS (30–50 MB/s) bei großen Date
 ```bash  
 minikube delete
 ```
+
+## kind
+```
+# kind installieren  
+sudo pacman -S kind  
+```
+
+### Einfachster Cluster
+`kind create cluster --name minio-cluster`
+`kind get clusters`
+
+### MinIO Projekt mit kind deployen
+```
+# Baue Image normal
+docker build -t benchmark-backend:v1 ./benchmark-backend
+
+# Lade Image IN den kind Cluster
+kind load docker-image benchmark-backend:v1 --name minio-cluster
+```
+
+### Deployment:
+
+```
+# 1. Cluster erstellen
+kind create cluster --name minio-cluster
+
+# 2. Backend Image bauen und laden
+cd ~/SharedStorageEK
+docker build -t benchmark-backend:v1 ./benchmark-backend
+kind load docker-image benchmark-backend:v1 --name minio-cluster
+
+# 3. Kubernetes Ressourcen deployen
+kubectl apply -f k8s/
+
+# 4. Status checken
+kubectl get pods -n minio-distributed
+
+# 5. Port-Forward
+kubectl port-forward -n minio-distributed svc/benchmark-service 9090:8080
+
+# 6. Test
+curl -X POST "http://localhost:9090/api/benchmark?count=10&sizeMB=10"
+
+```
+
+
 
 ### Quellen:
 
