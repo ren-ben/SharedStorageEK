@@ -202,6 +202,13 @@ GPU: AMD ATI HawkPoint1
 Memory: 29715MiB
 Kernel: 6.18.6-arch1-1
 
+Technische Spezifikationen (Oliwier Przewlocki)
+- GPU: RTX 4070 Mobile (8GB GDDR6, 4.608 CUDA-Cores, 35-115Watt, 128Bit Bus
+- CPU: Ryzen AI 9 370
+- RAM: 32GB DDR4
+- OS: W11 Pro
+- NVME 4TB
+
 ## Test
 ```
 
