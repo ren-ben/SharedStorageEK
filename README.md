@@ -127,6 +127,8 @@ Degradation: -20% zu Baseline (Metadata Overhead)
 | MinIO Custom     | MinIO  | 5       | 20 MB       | ~57 | ~2.0       | Erasure Coding                           |
 | TestDFSIO (HDFS) | HDFS   | 50      | 2 MB        | 25–30 | ~3.0–3.5   | Metadaten-Overhead, viele kleine Dateien |
 | MinIO Custom     | MinIO  | 50      | 2 MB        | ~32| ~3.0       | Metadaten-Overhead, viele kleine Dateien |
+
+
 MinIO erreicht 40–57 MB/s und übertrifft HDFS (30–50 MB/s) bei großen Dateien um bis zu 14%, da Erasure Coding effizienter ist als 3×-Replikation. Bei vielen kleinen Dateien dominiert Metadaten-Overhead (MinIO: -20%, HDFS: ~ -25%), was beide Systeme betrifft. Die Daten sind konsistent und wiederholbar; MinIO eignet sich besser für Cloud-Workloads dank S3-API und SPOF-Freiheit. Für Batch-Jobs bleibt HDFS relevant, aber MinIO skaliert linear mit Nodes.
 ## Cleanup
 ```bash  
