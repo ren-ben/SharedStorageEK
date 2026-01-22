@@ -1,0 +1,5 @@
+com\oliwier\benchmarkbackend\BenchmarkBackendApplication.class
+com\oliwier\benchmarkbackend\BenchmarkService$BenchmarkResult.class
+com\oliwier\benchmarkbackend\MinioConfig.class
+com\oliwier\benchmarkbackend\BenchmarkController.class
+com\oliwier\benchmarkbackend\BenchmarkService.class

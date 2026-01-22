@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: benchmark-backend
+  namespace: minio-distributed
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: benchmark
+  template:
+    metadata:
+      labels:
+        app: benchmark
+    spec:
+      containers:
+        - name: backend
+          image: benchmark-backend:v1
+          imagePullPolicy: IfNotPresent
+          env:
+            # Internal Cluster DNS for MinIO
+            - name: MINIO_URL
+              value: "http://minio-public:9000"
+            - name: MINIO_ACCESS_KEY
+              value: "admin"
+            - name: MINIO_SECRET_KEY
+              value: "MinioStrongPassword123!"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: benchmark-service
+  namespace: minio-distributed
+spec:
+  type: NodePort
+  selector:
+    app: benchmark
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 30080

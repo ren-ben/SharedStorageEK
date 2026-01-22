@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: minio-distributed
+---
+# Headless Service: Gives each Pod a DNS name
+# Format: <pod-name>.minio-headless.minio-distributed.svc.cluster.local
+apiVersion: v1
+kind: Service
+metadata:
+  name: minio-headless
+  namespace: minio-distributed
+  labels:
+    app: minio
+spec:
+  ports:
+    - port: 9000
+      name: api
+    - port: 9001
+      name: console
+  clusterIP: None # This makes it "Headless"
+  selector:
+    app: minio

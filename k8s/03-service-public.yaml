@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: minio-public
+  namespace: minio-distributed
+spec:
+  type: NodePort # Easier for local testing than LoadBalancer
+  selector:
+    app: minio
+  ports:
+    - port: 9000
+      targetPort: 9000
+      nodePort: 30090 # Fixed port for API
+      name: api
+    - port: 9001
+      targetPort: 9001
+      nodePort: 30091 # Fixed port for Console
+      name: console
