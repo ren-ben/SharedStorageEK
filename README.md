@@ -196,10 +196,10 @@ curl -X POST "http://localhost:9090/api/benchmark?count=10&sizeMB=10"
 # Arch Test
 
 Systeminfo(Alexander Hiroma):
-CPU:AMD Ryzen 7 250 w/ Radeon 780M Graphics (16) @ 5.134 
-OS: Arch Linux x86_64 
-GPU: AMD ATI HawkPoint1
-Memory: 29715MiB
+CPU:AMD Ryzen 7 250 w/ Radeon 780M Graphics (16) @ 5.134 \
+OS: Arch Linux x86_64 \
+GPU: AMD ATI HawkPoint1\
+Memory: 29715MiB\
 Kernel: 6.18.6-arch1-1
 
 Technische Spezifikationen (Oliwier Przewlocki)
