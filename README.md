@@ -193,9 +193,9 @@ curl -X POST "http://localhost:9090/api/benchmark?count=10&sizeMB=10"
 
 ```
 
-Arch Test
+# Arch Test
 
-Systeminfo:
+Systeminfo(Alexander Hiroma):
 CPU:AMD Ryzen 7 250 w/ Radeon 780M Graphics (16) @ 5.134 
 OS: Arch Linux x86_64 
 GPU: AMD ATI HawkPoint1
@@ -209,9 +209,9 @@ Technische Spezifikationen (Oliwier Przewlocki)
 - OS: W11 Pro
 - NVME 4TB
 
-## Test
-```
 
+### Test Arch
+```
     curl -X POST "http://localhost:9090/api/benchmark?count=5&sizeMB=20"
 {"files":5,"sizeMB":20,"timeSeconds":0.56,"throughputMBps":178.57142857142856}⏎                    󰪢 0s 󰜥 󰉋  ••/SharedStorageEK 󰜥 󰘬 master 
     curl -X POST "http://localhost:9090/api/benchmark?count=10&sizeMB=10"
