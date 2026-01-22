@@ -193,7 +193,25 @@ curl -X POST "http://localhost:9090/api/benchmark?count=10&sizeMB=10"
 
 ```
 
+Arch Test
 
+Systeminfo:
+CPU:AMD Ryzen 7 250 w/ Radeon 780M Graphics (16) @ 5.134 
+OS: Arch Linux x86_64 
+GPU: AMD ATI HawkPoint1
+Memory: 29715MiB
+Kernel: 6.18.6-arch1-1
+
+## Test
+```
+
+    curl -X POST "http://localhost:9090/api/benchmark?count=5&sizeMB=20"
+{"files":5,"sizeMB":20,"timeSeconds":0.56,"throughputMBps":178.57142857142856}⏎                    󰪢 0s 󰜥 󰉋  ••/SharedStorageEK 󰜥 󰘬 master 
+    curl -X POST "http://localhost:9090/api/benchmark?count=10&sizeMB=10"
+{"files":10,"sizeMB":10,"timeSeconds":0.587,"throughputMBps":170.35775127768315}⏎                  󰪢 0s 󰜥 󰉋  ••/SharedStorageEK 󰜥 󰘬 master 
+    curl -X POST "http://localhost:9090/api/benchmark?count=50&sizeMB=2"
+{"files":50,"sizeMB":2,"timeSeconds":0.642,"throughputMBps":155.76323987538942}⏎    
+```
 
 ### Quellen:
 
